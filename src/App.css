@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Kulim+Park&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Ma+Shan+Zheng&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+.container {
+  padding-left: 0;
+  padding-right: 0;
+}
+.App {
+  text-align: center;
+  max-width: 370px;
+  border: 1px solid black;
+  border-radius: 0.3rem;
+  overflow: hidden;
+}
+.header {
+  padding: 20px;
+  background: #c3d5da;
+}
+.header h3 {
+  /* font-family: 'Kulim Park', sans-serif; */
+  /* font-family: 'Roboto', sans-serif; */
+  font-family: 'Ma Shan Zheng', cursive;
+}
+.add-text {
+  font-family: 'Ma Shan Zheng', cursive;
+}
+
+.items {
+   min-height: 400px; 
+}
+.input-group-text {
+  border-radius: 0;
+  cursor: pointer;
+}
+.input-group-text input {
+  cursor: pointer;
+}
+.add_button {
+  width: 3.63rem;
+}
+.add_button:hover{
+  background: green;
+  opacity: 0.8;
+}
+
+.line_through{
+  text-decoration: line-through;
+}
+.del_button:hover {
+  background: red;
+  opacity: 0.7;
+}
+.all_btn:hover {
+  background: #4399e5;
+}
+.completed_btn:hover {
+  background: #e033ea;
+}
+.noncomp_btn:hover {
+  background:  #3fca46;
+}
+.div_form_control{
+  background: #e9ecef;
+  text-align: left;
+}
+.popup {
+  /* display: none; */
+  /* position: absolute; */
+  width: 272px;
+  height: 38px;
+  background: white;
+  border-radius: 0.3rem;
+  top: 0px;
+  left: 38px;
+  /* border: none; */
+}
+
+.popup[disabled] {
+  color: red;
+}
