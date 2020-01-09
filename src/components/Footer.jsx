@@ -10,7 +10,7 @@ function Footer({ setFilterTodos }) {
                 type="button"
                 onClick={() => setFilterTodos('all')}
                 className="add-text btn btn-outline-secondary all_btn">
-                All0
+                All
                     </button>
             <button
                 type="button"

@@ -6,6 +6,10 @@ import Items from './components/items/Items';
 import uuid from 'uuid';
 import Footer from "./components/Footer";
 
+const myContext = React.createContext();
+
+
+
 
 const data = [
   {
