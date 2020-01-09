@@ -38,6 +38,7 @@ const Item = ({ element, remove, markComplite, updateTodoText }) => {
             <label className="input-group-text">
                 <input type="checkbox" onChange={() => markComplite(id)} checked={done} />
             </label>
+
             {!edit
                 ? (
                     <div 
@@ -48,7 +49,7 @@ const Item = ({ element, remove, markComplite, updateTodoText }) => {
                     </div>
                 ) : (
                     <input
-                        className="popup"
+                        className="chenge_input"
                         value={newValue}
                         onChange={onTextChange}
                         onBlur={saveNewValue}
