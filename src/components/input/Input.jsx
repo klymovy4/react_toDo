@@ -3,7 +3,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../App.css';
 import { MyContext } from '../Context';
 
-
 const Input = ( ) => {
     const [todoTitle, setTodoTitle] = useState("");
     const { addTodo } = useContext(MyContext);

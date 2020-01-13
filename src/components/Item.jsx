@@ -3,17 +3,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import '../App';
 import { MyContext } from "./Context";
 
-const Item = ({
-    element,
-    // remove,
-    // markComplite,
-    // updateTodoText
-}) => {
+const Item = ({ element }) => {
     const { remove, markComplite, updateTodoText } = useContext(MyContext);
-
-
-
-
     const [edit, setEdit] = useState(false);
     const [newValue, setNewValue] = useState(element.value);
     const

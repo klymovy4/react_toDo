@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../App';
+import { MyContext } from "./Context";
 
-function Footer({ setFilterTodos, clearList }) {
+const Footer = ({
+    // setFilterTodos,
+    clearList
+}) => {
+    const { setFilterTodos } = useContext(MyContext);
 
 
 
@@ -26,17 +31,6 @@ function Footer({ setFilterTodos, clearList }) {
                 className="add-text btn btn-outline-secondary noncomp_btn">
                 Not Completed
             </button>
-
-                {/* {(context) => (
-                    <button
-                    onClick={clearList}
-                    type="button"
-                    className="clear_text btn btn-outline-secondary noncomp_btn">
-                        clear List
-                </button> */}
-                {/* )} */}
-                        {/* <MyContext.Consumer> */}
-            {/* </MyContext.Consumer> */}
         </div>
     )
 }

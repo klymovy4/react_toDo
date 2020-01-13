@@ -18,23 +18,16 @@ const data = [
         done: false
     },
 ]
-export const MyContext = React.createContext({
-    todos: [],
-    addTodo: () => {},
-});
-
-
-// const clearList = () => {
-//     setTodos([]);
-// }
+export const MyContext = React.createContext();
 const MyProvider = (props) => {
     const [todos, setTodos] = useState(data);
+    const [filter, setFilterTodos] = useState("all");
 
     const addTodo = (textInInput) => {
         setTodos([...todos, {
-        id: uuid.v4(),
-        value: textInInput,
-        done: false
+            id: uuid.v4(),
+            value: textInInput,
+            done: false
         }]);
     }
 
@@ -48,28 +41,30 @@ const MyProvider = (props) => {
             if (el.id === id) {
                 el.done = !el.done
             }
-                return el
-            })
+            return el
+        })
         )
     }
 
     const updateTodoText = (id, newValue) => {
         setTodos(todos.map(el => {
-        if (el.id === id) {
-            el.value = newValue;
-        }
-        return el;
+            if (el.id === id) {
+                el.value = newValue;
+            }
+            return el;
         }))
     }
 
     return (
 
         <MyContext.Provider value={{
-           todos,
-           addTodo,
-           remove,
-           markComplite,
-           updateTodoText
+            todos,
+            addTodo,
+            remove,
+            markComplite,
+            updateTodoText,
+            filter,
+            setFilterTodos
         }}>
             {props.children}
         </MyContext.Provider>
