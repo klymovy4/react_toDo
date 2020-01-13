@@ -43,7 +43,7 @@ const App = () => {
   const markCompleteTodo = (id) => {
     console.log(id);
     setTodos(todos.map(el => {
-      if(el.id === id){
+      if (el.id === id) {
         el.done = !el.done
       }
       return el;
@@ -59,7 +59,9 @@ const App = () => {
         <Input />
 
         {todos.map(el =>
-          <Item key={el.id}
+          <Item
+            key={el.id}
+            todos={todos}
             title={el.title}
             done={el.done}
             id={el.id}
@@ -68,7 +70,6 @@ const App = () => {
           >{el.title}</Item>
 
         )}
-        {/* <Item /> */}
       </div>
       <Footer
       />

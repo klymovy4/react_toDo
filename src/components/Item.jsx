@@ -1,12 +1,15 @@
 import React from "react";
 import "../App.css";
-import style from "./item.module.css";
 
-const Item = ({ done, title, id, removeTodo, markCompleteTodo }) => {
+const Item = ({ todos, done, title, id, removeTodo, markCompleteTodo }) => {
     const line_through = done ? "line_throgh" : "";
-    console.log(line_through, done);
-    
-    // title = el.title
+
+console.log(done);
+
+
+
+
+
     const remove = () => {
         removeTodo(id);
     }
@@ -24,7 +27,7 @@ const Item = ({ done, title, id, removeTodo, markCompleteTodo }) => {
                     />
                 </div>
             </label>
-            <div className={"title " + style.line_through}>{title}</div>
+            <div className={"title " + line_through}>{title}</div>
             <div className="input-group-append">
                 <button
                     className="btn btn-outline-secondary"
