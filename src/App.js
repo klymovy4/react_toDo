@@ -10,7 +10,7 @@ import uuid from "uuid";
 
 const date = [{
   id: uuid.v4(),
-  done: false,
+  done: true,
   title: "hello from date 1"
 },
 {
@@ -42,10 +42,11 @@ const App = () => {
 
   const markCompleteTodo = (id) => {
     console.log(id);
-    setTodos(todos.find(element => {
-      if(element.id !== id){
-        element.done === !element.done
+    setTodos(todos.map(el => {
+      if(el.id === id){
+        el.done = !el.done
       }
+      return el;
     }))
   }
 
