@@ -1,74 +1,33 @@
-import React, { useState } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import '../App';
+import React from "react";
+import "../App.css";
 
-const Item = ({ element, remove, markComplite, updateTodoText }) => {
-
-    const [edit, setEdit] = useState(false);
-    const [newValue, setNewValue] = useState(element.value);
-    const
-        done = element.done,
-        line_through = done ? "line_through" : "",
-        value = element.value,
-        id = element.id;
-
-    const onTextChange = e => setNewValue(e.target.value);
-
-    const saveNewValue = () => {
-        setEdit(false);
-        updateTodoText(id, newValue);
+const Item = ({ done, title, id,removeTodo, markCompleteTodo }) => {
+    // const id = el.id;
+        // title = el.title
+    const remove = () => {
+        // console.log(id);
+        removeTodo(id);
     }
-
-    const resetValue = () => {
-        setNewValue(value);
-        setEdit(false);
+    const markComplete = () => {
+        markCompleteTodo(id)
     }
-
-    const onKeyDown = (e) => {
-        if (e.keyCode === 13) {
-            saveNewValue();
-        } else if (e.keyCode === 27) {
-            resetValue();
-        }
-
-    }
-
     return (
-        <div className="input-group mb-1 ">
-            <label className="input-group-text">
-                <input type="checkbox" onChange={() => markComplite(id)} checked={done} />
-            </label>
-
-            {!edit
-                ? (
-                    <div 
-                        className={"div_form_control form-control " + line_through}
-                        onDoubleClick={() => setEdit(true)}
-                    >
-                        {value}
-                    </div>
-                ) : (
+        <div className=" item input-group mb-1">
+            <label className="input-group-prepend m-0">
+                <div className="input-group-text">
                     <input
-                        className="chenge_input"
-                        value={newValue}
-                        onChange={onTextChange}
-                        onBlur={saveNewValue}
-                        onKeyDown={onKeyDown}
+                        type="checkbox"
+                        onClick={() => markComplete(id)}
                     />
-                )
-            }
-
+                </div>
+            </label>
+            <div className="title">{title}</div>
             <div className="input-group-append">
                 <button
-                    className="btn btn-outline-secondary add-text del_button"
-                    type="button"
+                    className="btn btn-outline-secondary"
                     onClick={() => remove(id)}
-                >
-                    Delete
-                </button>
+                >Del</button>
             </div>
-
-
         </div>
     )
 }

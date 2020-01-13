@@ -1,0 +1,78 @@
+import React, { useState } from "react";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Header from "./components/Header";
+import "./App.css";
+import Footer from "./components/Footer";
+import Input from "./components/input/Input";
+import Item from "./components/Item";
+import uuid from "uuid";
+
+
+const date = [{
+  id: uuid.v4(),
+  done: false,
+  title: "hello from date 1"
+},
+{
+  id: uuid.v4(),
+  done: false,
+  title: "hello from date 2"
+},
+{
+  id: uuid.v4(),
+  done: false,
+  title: "hello from date 3"
+},
+{
+  id: uuid.v4(),
+  done: false,
+  title: "hello from date 4"
+},
+]
+
+const App = () => {
+  const [todos, setTodos] = useState(date);
+
+
+  const removeTodo = (id) => {
+    setTodos(todos.filter(el => el.id !== id)
+
+    )
+  }
+
+  const markCompleteTodo = (id) => {
+    console.log(id);
+    setTodos(todos.find(element => {
+      if(element.id !== id){
+        element.done === !element.done
+      }
+    }))
+  }
+
+
+
+  return (
+    <div className="container app">
+      <div>
+        <Header />
+        <Input />
+
+        {todos.map(el =>
+          <Item key={el.id}
+            title={el.title}
+            done={el.done}
+            id={el.id}
+            removeTodo={removeTodo}
+            markCompleteTodo={markCompleteTodo}
+          >{el.title}</Item>
+
+        )}
+        {/* <Item /> */}
+      </div>
+      <Footer
+      />
+    </div>
+  )
+}
+
+export default App;
