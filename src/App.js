@@ -7,70 +7,9 @@ import uuid from 'uuid';
 import Footer from "./components/Footer";
 import MyProvider from "./components/Context";
 
-
-// const data = [
-//   {
-//     id: uuid.v4(),
-//     value: "Task 1",
-//     done: false
-//   },
-//   {
-//     id: uuid.v4(),
-//     value: "Task 2",
-//     done: false
-//   },
-//   {
-//     id: uuid.v4(),
-//     value: "Task 3",
-//     done: false
-//   },
-// ]
-
 let date = new Date();
 
-
 function App() {
-  // const [todos, setTodos] = useState([]);
-
-  // const addTodo = (textInInput) => {
-  //   setTodos([...todos, {
-  //     id: uuid.v4(),
-  //     value: textInInput,
-  //     done: false
-  //   }]);
-  // }
-
-  // const remove = (id) => {
-  //   setTodos(todos.filter(el => el.id !== id))
-
-  // }
-
-  // const markComplite = (id) => {
-  //   setTodos(todos.map(el => {
-  //     if (el.id === id) {
-  //       el.done = !el.done
-  //     }
-  //     return el
-  //   })
-  //   )
-  // }
-
-  // const updateTodoText = (id, newValue) => {
-  //   setTodos(todos.map(el => {
-  //     if (el.id === id) {
-  //       el.value = newValue;
-  //     }
-  //     return el;
-  //   }))
-  // }
-
-  // const clearList = () => {
-  //   setTodos([]);
-  // }
-
-
-
-  const [filterTodos, setFilterTodos] = useState("all"); // all, compl, non
 
   return (
     <>
@@ -83,20 +22,9 @@ function App() {
               {/* {date.getMonth() + 1 + " : " + date.getDate() + " : " + date.getFullYear()} */}
             </div>
           </div>
-          <Input
-            // getValue={addTodo}
-          />
-          <Items 
-          // todos={todos}
-            // updateTodoText={updateTodoText}
-            // remove={remove}
-            // markComplite={markComplite}
-            filter={filterTodos}
-          />
-          <Footer
-            setFilterTodos={setFilterTodos}
-          // clearList={clearList}
-          />
+          <Input />
+          <Items />
+          <Footer />
 
         </div>
       </MyProvider>
