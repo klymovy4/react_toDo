@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../App.css';
+import { MyContext } from '../Context';
 
 
-const Input = ({ getValue }) => {
-    const [todoTitle, setTodoTitle] = useState("")
+const Input = ( ) => {
+    const [todoTitle, setTodoTitle] = useState("");
+    const { addTodo } = useContext(MyContext);
     
     const changeTitle = (event) => {
         setTodoTitle(event.target.value)
@@ -13,7 +15,7 @@ const Input = ({ getValue }) => {
     const onSubmitHeandler = (event) => {
         event.preventDefault();
         if(todoTitle === "") return;
-        getValue(todoTitle)
+        addTodo(todoTitle)
         setTodoTitle("");
     }
 

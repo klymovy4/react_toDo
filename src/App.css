@@ -17,10 +17,10 @@
   overflow: hidden;
 }
 .header {
-  padding: 20px;
+  padding: 20px 20px 5px 20px;
   background: #c3d5da;
 }
-.header h3 {
+.header h3, .date {
   /* font-family: 'Kulim Park', sans-serif; */
   /* font-family: 'Roboto', sans-serif; */
   font-family: 'Ma Shan Zheng', cursive;
@@ -77,4 +77,7 @@
   height: 38px;
   background: white;
   border-radius: 0.3rem;
+}
+.clear_text:hover {
+  background: #b9ca49;
 }

@@ -2,7 +2,9 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../App';
 
-function Footer({ setFilterTodos }) {
+function Footer({ setFilterTodos, clearList }) {
+
+
 
     return (
         <div className="btn-group w-100" role="group" aria-label="Basic example">
@@ -23,7 +25,18 @@ function Footer({ setFilterTodos }) {
                 type="button"
                 className="add-text btn btn-outline-secondary noncomp_btn">
                 Not Completed
-                </button>
+            </button>
+
+                {/* {(context) => (
+                    <button
+                    onClick={clearList}
+                    type="button"
+                    className="clear_text btn btn-outline-secondary noncomp_btn">
+                        clear List
+                </button> */}
+                {/* )} */}
+                        {/* <MyContext.Consumer> */}
+            {/* </MyContext.Consumer> */}
         </div>
     )
 }

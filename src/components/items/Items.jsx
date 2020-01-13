@@ -1,14 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../../App.css';
 import Item from '../Item';
+import { MyContext } from "../Context";
 
-const Items = ({ todos, remove, markComplite, filter, updateTodoText }) => {
+const Items = ({ remove, markComplite, filter, updateTodoText }) => {
+    const { todos } = useContext(MyContext);
+
     const showTodos = () => {
         let todosFiltered = todos;
 
         if (filter !== 'all') {
-            todosFiltered = todos.filter(el => 
+            todosFiltered = todos.filter(el =>
                 filter === 'compl' ? el.done : !el.done
             )
         }
@@ -26,12 +29,11 @@ const Items = ({ todos, remove, markComplite, filter, updateTodoText }) => {
 
         return todosFiltered.map(element =>
             <Item
-                updateTodoText={updateTodoText}
-                todos={todos}
+                // updateTodoText={updateTodoText}
                 element={element}
                 key={element.id}
-                remove={remove}
-                markComplite={markComplite}
+                // remove={remove}
+                // markComplite={markComplite}
             />
         )
     }

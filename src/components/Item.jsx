@@ -1,8 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../App';
+import { MyContext } from "./Context";
 
-const Item = ({ element, remove, markComplite, updateTodoText }) => {
+const Item = ({
+    element,
+    // remove,
+    // markComplite,
+    // updateTodoText
+}) => {
+    const { remove, markComplite, updateTodoText } = useContext(MyContext);
+
+
+
 
     const [edit, setEdit] = useState(false);
     const [newValue, setNewValue] = useState(element.value);
@@ -34,42 +44,49 @@ const Item = ({ element, remove, markComplite, updateTodoText }) => {
     }
 
     return (
-        <div className="input-group mb-1 ">
-            <label className="input-group-text">
-                <input type="checkbox" onChange={() => markComplite(id)} checked={done} />
-            </label>
+        <>
 
-            {!edit
-                ? (
-                    <div 
-                        className={"div_form_control form-control " + line_through}
-                        onDoubleClick={() => setEdit(true)}
+            <div className="input-group mb-1 ">
+                <label className="input-group-text">
+                    <input type="checkbox" onChange={() => markComplite(id)} checked={done} />
+                </label>
+
+                {!edit
+                    ? (
+                        <div
+                            className={"div_form_control form-control " + line_through}
+                            onDoubleClick={() => setEdit(true)}
+                        >
+                            {value}
+                        </div>
+                    ) : (
+                        <input
+                            className="chenge_input"
+                            value={newValue}
+                            onChange={onTextChange}
+                            onBlur={saveNewValue}
+                            onKeyDown={onKeyDown}
+                        />
+                    )
+                }
+
+                <div className="input-group-append">
+                    <button
+                        className="btn btn-outline-secondary add-text del_button"
+                        type="button"
+                        onClick={() => remove(id)}
                     >
-                        {value}
-                    </div>
-                ) : (
-                    <input
-                        className="chenge_input"
-                        value={newValue}
-                        onChange={onTextChange}
-                        onBlur={saveNewValue}
-                        onKeyDown={onKeyDown}
-                    />
-                )
-            }
-
-            <div className="input-group-append">
-                <button
-                    className="btn btn-outline-secondary add-text del_button"
-                    type="button"
-                    onClick={() => remove(id)}
-                >
-                    Delete
+                        Delete
                 </button>
+                </div>
+
+
             </div>
 
-
-        </div>
+            {/* <MyContext.Consumer> */}
+            {/* {value}  */}
+            {/* </MyContext.Consumer> */}
+        </>
     )
 }
 
