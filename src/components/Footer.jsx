@@ -5,6 +5,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Footer = ({ setCompl }) => {
 
+
+
     const btns = [{
         title: "All",
         class: "btn btn-secondary",
