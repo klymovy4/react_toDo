@@ -20,7 +20,9 @@ const Item = ({ element, removeTodo, markCompleteTodo }) => {
                 <div className="input-group-text">
                     <input
                         type="checkbox"
-                        onClick={() => markComplete(id)}
+                        checked={done}
+                        onChange={() => markComplete(id)}
+                        // onClick={}
                     />
                 </div>
             </label>
