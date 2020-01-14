@@ -37,18 +37,17 @@ const App = () => {
 
     const showComplete = () => {
         let newFilter = todos;
-
-        newFilter = todos.filter(el => {
-            if (compl !== "all") {
+        if (compl !== "all") {
+            newFilter = todos.filter(el => {
                 compl === "comple" ? el.done : !el.done
+
+
             }
-        })
+            )
 
-        // return newFilter;
+            // return newFilter;
 
-    }
-
-
+        }
 
 
 
@@ -61,57 +60,59 @@ const App = () => {
 
 
 
-    const removeTodo = (id) => {
-        setTodos(todos.filter(el => el.id !== id)
 
+
+        const removeTodo = (id) => {
+            setTodos(todos.filter(el => el.id !== id)
+
+            )
+        }
+
+        const markCompleteTodo = (id) => {
+            setTodos(todos.map(el => {
+                if (el.id === id) {
+                    el.done = !el.done
+                }
+                return el;
+            }))
+        }
+
+        const addTodo = (changeText) => {
+            setTodos([...todos, {
+                id: uuid.v4(),
+                title: changeText,
+                done: false
+            }])
+            return todos;
+        }
+
+
+
+        return (
+            <div className="container app">
+                <div>
+                    <Header />
+                    <Input
+                        addTodo={addTodo}
+                    />
+
+                    {showComplete.map(el =>
+                        <Item
+                            key={el.id}
+                            element={el}
+                            removeTodo={removeTodo}
+                            markCompleteTodo={markCompleteTodo}
+                        >
+                            {el.title}
+                        </Item>
+
+                    )}
+                </div>
+                <Footer
+                    setCompl={setCompl}
+                />
+            </div>
         )
     }
 
-    const markCompleteTodo = (id) => {
-        setTodos(todos.map(el => {
-            if (el.id === id) {
-                el.done = !el.done
-            }
-            return el;
-        }))
-    }
-
-    const addTodo = (changeText) => {
-        setTodos([...todos, {
-            id: uuid.v4(),
-            title: changeText,
-            done: false
-        }])
-        return todos;
-    }
-
-
-
-    return (
-        <div className="container app">
-            <div>
-                <Header />
-                <Input
-                    addTodo={addTodo}
-                />
-
-                {showComplete.map(el =>
-                    <Item
-                        key={el.id}
-                        element={el}
-                        removeTodo={removeTodo}
-                        markCompleteTodo={markCompleteTodo}
-                    >
-                        {el.title}
-                    </Item>
-
-                )}
-            </div>
-            <Footer
-                setCompl={setCompl}
-            />
-        </div>
-    )
-}
-
-export default App;
+    export default App;
