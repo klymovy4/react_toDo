@@ -1,33 +1,46 @@
-import React from "react";
+import React, { useState } from "react";
 import "../../App.css";
 
-const Input = ({ addTodo, setTodos }) => {
+const Input = ({ addTodo }) => {
 
-    const addNewTodo = (addNewText) => {
-        addTodo(addNewText);
-        // setTodos("");
+    const [newValue, setNewValue] = useState("")
+
+    const onsubmitHandler = () => {
+        addTodo(newValue);
+        setNewValue("");
+
     }
     const addNewText = (event) => {
-        console.log(event.target.value);
-
+        
+        setNewValue(event.target.value);
+        
     }
-
+    const keyCode =(event) =>{
+        if (event.keyCode === 13) {
+            console.log(123);
+        }
+    }
 
 
     return (
-        <div className="input-group mb-3">
+        <div
+
+            className="input-group mb-3">
             <input
                 type="text"
                 className="form-control"
                 placeholder="add todo"
-                onChange={(event) => addNewText(event)}
+                value={newValue}
+                onChange={addNewText}
+                onClick={keyCode}
             />
             <div className="input-group-append">
                 <button
                     className="btn btn-outline-secondary"
-                    type="button"
-                    onClick={addNewTodo}
-                >Add...</button>
+                    // type="button"
+                    onClick={onsubmitHandler}
+                >Add...
+                </button>
             </div>
         </div>
     )

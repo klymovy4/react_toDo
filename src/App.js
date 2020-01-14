@@ -8,7 +8,7 @@ import Item from "./components/Item";
 import uuid from "uuid";
 
 
-const date = [{
+const data = [{
   id: uuid.v4(),
   done: false,
   title: "hello from date 1"
@@ -31,7 +31,7 @@ const date = [{
 ]
 
 const App = () => {
-  const [todos, setTodos] = useState(date);
+  const [todos, setTodos] = useState(data);
 
 
   const removeTodo = (id) => {
@@ -50,11 +50,11 @@ const App = () => {
   }
 
   const addTodo = (changeText) => {
-    setTodos([...todos], {
+    setTodos([...todos, {
       id: uuid.v4(),
-      done: false,
-      title: changeText
-    })
+      title: changeText,
+      done: false
+    }])
     return todos;
   }
 
@@ -68,7 +68,6 @@ const App = () => {
         <Header />
         <Input
           addTodo={addTodo}
-          setTodos={setTodos}
         />
 
         {todos.map(el =>
