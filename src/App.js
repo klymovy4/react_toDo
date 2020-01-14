@@ -36,15 +36,15 @@ const App = () => {
 
 
     const showComplete = () => {
-        const newFilter = todos;
+        let newFilter = todos;
 
-        newFilter.filter(el => {
+        newFilter = todos.filter(el => {
             if (compl !== "all") {
                 compl === "comple" ? el.done : !el.done
             }
         })
 
-        return newFilter;
+        // return newFilter;
 
     }
 
