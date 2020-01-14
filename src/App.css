@@ -49,6 +49,6 @@
 .input-group-prepend {
     cursor: pointer;
 }
-.line_through{
+.line-through{
     text-decoration: line-through;
 }

@@ -10,7 +10,7 @@ import uuid from "uuid";
 
 const date = [{
   id: uuid.v4(),
-  done: true,
+  done: false,
   title: "hello from date 1"
 },
 {
@@ -41,7 +41,6 @@ const App = () => {
   }
 
   const markCompleteTodo = (id) => {
-    console.log(id);
     setTodos(todos.map(el => {
       if (el.id === id) {
         el.done = !el.done
@@ -50,13 +49,27 @@ const App = () => {
     }))
   }
 
+  const addTodo = (changeText) => {
+    setTodos([...todos], {
+      id: uuid.v4(),
+      done: false,
+      title: changeText
+    })
+    return todos;
+  }
+
+
+
 
 
   return (
     <div className="container app">
       <div>
         <Header />
-        <Input />
+        <Input
+          addTodo={addTodo}
+          setTodos={setTodos}
+        />
 
         {todos.map(el =>
           <Item
