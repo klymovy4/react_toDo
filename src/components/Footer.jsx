@@ -1,16 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 // import Header from "../components/Header";
 import "../App.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const Footer = ({todos}) => {
+const Footer = ({ setCompl }) => {
+
+    const btns = [{
+        title: "All",
+        class: "btn btn-secondary",
+        filter: 'all',
+
+    },
+    {
+        title: "Complete",
+        class: "btn btn-secondary",
+        filter: "comple"
+    },
+    {
+        title: "Uncomplete",
+        class: "btn btn-secondary",
+        filter: "unComple"
+    }]
+
     return (
         <div className="footer">
-            {/* <div className="btn-group" role="group" aria-label="Basic example"> */}
-                <button type="button" className="btn btn-secondary">Left</button>
-                <button type="button" className="btn btn-secondary">Middle</button>
-                <button type="button" className="btn btn-secondary">Right</button>
-            {/* </div> */}
+            {btns.map((el, index) => <button
+                key={index}
+                onClick={() => setCompl(el.filter)}
+                className={el.class}
+            >{el.title}</button>)}
         </div>
     )
 }

@@ -13,25 +13,36 @@ const data = [{
   done: false,
   title: "hello from date 1"
 },
-{
-  id: uuid.v4(),
-  done: false,
-  title: "hello from date 2"
-},
-{
-  id: uuid.v4(),
-  done: false,
-  title: "hello from date 3"
-},
-{
-  id: uuid.v4(),
-  done: false,
-  title: "hello from date 4"
-},
+  // {
+  //   id: uuid.v4(),
+  //   done: false,
+  //   title: "hello from date 2"
+  // },
+  // {
+  //   id: uuid.v4(),
+  //   done: false,
+  //   title: "hello from date 3"
+  // },
+  // {
+  //   id: uuid.v4(),
+  //   done: false,
+  //   title: "hello from date 4"
+  // },
+]
+
+const a = [
+  {
+    text: "first"
+  }
 ]
 
 const App = () => {
   const [todos, setTodos] = useState(data);
+  const [compl, setCompl] = useState("all")
+  const [fruit, setFruit] = useState(a);
+
+
+
 
 
   const removeTodo = (id) => {
@@ -58,6 +69,12 @@ const App = () => {
     return todos;
   }
 
+  const changeFruit = () => {
+    setFruit([...fruit, {
+      text: "orange"
+    }]);
+    return fruit;
+  }
 
 
 
@@ -73,18 +90,25 @@ const App = () => {
         {todos.map(el =>
           <Item
             key={el.id}
-            todos={todos}
-            title={el.title}
-            done={el.done}
-            id={el.id}
+            element={el}
             removeTodo={removeTodo}
             markCompleteTodo={markCompleteTodo}
-          >{el.title}</Item>
+          >
+            {el.title}
+          </Item>
 
         )}
       </div>
       <Footer
+        setCompl={setCompl}
       />
+      {fruit.map(el => <p key={el.id}>{el.text}</p>)}
+
+      <button
+        onClick={changeFruit}
+      >
+        Change fruit
+      </button>
     </div>
   )
 }
