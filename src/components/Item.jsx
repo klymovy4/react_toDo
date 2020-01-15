@@ -5,9 +5,6 @@ const Item = ({ element, removeTodo, markCompleteTodo, onchangeText }) => {
     const [input, setInput] = useState(false)
     const [newValueInput, setNewValueInput] = useState(element.title)
 
-
-
-
     const id = element.id,
         title = element.title,
         done = element.done,
@@ -16,26 +13,29 @@ const Item = ({ element, removeTodo, markCompleteTodo, onchangeText }) => {
     const remove = () => {
         removeTodo(id);
     }
+    
     const markComplete = () => {
         markCompleteTodo(id)
     }
 
     const changeTextInInput = (e) => {
         setNewValueInput(e.target.value);
-
     }
 
     const changeText = () => {
         onchangeText(id, newValueInput);
         setInput(false)
     }
+
     const changeText13 = (e) => {
         if(e.keyCode === 13){
             onchangeText(id, newValueInput);
             setInput(false)
+        }else if(e.keyCode === 27){
+            setNewValueInput(element.title)
+            setInput(false)
         }
     }
-
 
     return (
         <div className="item input-group mb-1">
@@ -48,7 +48,6 @@ const Item = ({ element, removeTodo, markCompleteTodo, onchangeText }) => {
                     />
                 </div>
             </label>
-
 
             {input ?
                 (
@@ -69,16 +68,6 @@ const Item = ({ element, removeTodo, markCompleteTodo, onchangeText }) => {
                     </div>
                 )
             }
-
-
-
-
-
-
-
-
-
-
             <div className="input-group-append">
                 <button
                     className="btn btn-outline-secondary"

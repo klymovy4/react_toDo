@@ -6,7 +6,7 @@ import Footer from "./components/Footer";
 import Input from "./components/input/Input";
 import Item from "./components/Item";
 import uuid from "uuid";
-
+import RealContext from "./components/Context"
 
 const data = [{
     id: uuid.v4(),
@@ -29,9 +29,6 @@ const App = () => {
         }))
     }
 
-
-
-
     const showComplete = () => {
         let newFilter = todos;
         if (compl !== "all") {
@@ -49,12 +46,10 @@ const App = () => {
             >
                 {el.title}
             </Item>)
-
     }
 
     const removeTodo = (id) => {
         setTodos(todos.filter(el => el.id !== id)
-
         )
     }
 
@@ -76,22 +71,22 @@ const App = () => {
         return todos;
     }
 
-
-
     return (
-        <div className="container app">
-            <div>
-                <Header />
-                <Input
-                    addTodo={addTodo}
-                />
+        <RealContext>
+            <div className="container app">
+                <div>
+                    <Header />
+                    <Input
+                        addTodo={addTodo}
+                    />
 
-                {showComplete()}
+                    {showComplete()}
+                </div>
+                <Footer
+                    // setCompl={setCompl}
+                />
             </div>
-            <Footer
-                setCompl={setCompl}
-            />
-        </div>
+        </RealContext>
     )
 }
 

@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 // import Header from "../components/Header";
 import "../App.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import {myContext} from "./Context";
 
-const Footer = ({ setCompl }) => {
-
+const Footer = ({ 
+    // setCompl 
+}) => {
+const setCompl = useContext(myContext)
 
 
     const btns = [{
