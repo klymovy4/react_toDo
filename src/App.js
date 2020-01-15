@@ -12,27 +12,24 @@ const data = [{
     id: uuid.v4(),
     done: false,
     title: "hello from date 1"
-},
-    // {
-    //   id: uuid.v4(),
-    //   done: false,
-    //   title: "hello from date 2"
-    // },
-    // {
-    //   id: uuid.v4(),
-    //   done: false,
-    //   title: "hello from date 3"
-    // },
-    // {
-    //   id: uuid.v4(),
-    //   done: false,
-    //   title: "hello from date 4"
-    // },
+}
 ]
 
 const App = () => {
     const [todos, setTodos] = useState(data);
     const [compl, setCompl] = useState("all");
+
+
+    const changeText = (id, text) => {
+        setTodos(todos.map(el => {
+            if (el.id === id) {
+                el.title = text
+            }
+            return el;
+        }))
+    }
+
+
 
 
     const showComplete = () => {
@@ -47,18 +44,13 @@ const App = () => {
                 key={el.id}
                 element={el}
                 removeTodo={removeTodo}
+                onchangeText={changeText}
                 markCompleteTodo={markCompleteTodo}
             >
                 {el.title}
             </Item>)
 
     }
-
-
-
-
-
-
 
     const removeTodo = (id) => {
         setTodos(todos.filter(el => el.id !== id)
