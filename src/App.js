@@ -6,7 +6,7 @@ import Footer from "./components/Footer";
 import Input from "./components/input/Input";
 import Item from "./components/Item";
 import uuid from "uuid";
-import RealContext from "./components/Context"
+// import RealContext from "./components/Context"
 
 const data = [{
     id: uuid.v4(),
@@ -72,7 +72,7 @@ const App = () => {
     }
 
     return (
-        <RealContext>
+       
             <div className="container app">
                 <div>
                     <Header />
@@ -83,10 +83,10 @@ const App = () => {
                     {showComplete()}
                 </div>
                 <Footer
-                    // setCompl={setCompl}
+                    setCompl={setCompl}
                 />
             </div>
-        </RealContext>
+       
     )
 }
 
