@@ -1,14 +1,10 @@
 import React, { useContext } from "react";
-// import Header from "../components/Header";
 import "../App.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
-// import {myContext} from "./Context";
+import { myContext } from "./Context";
 
-const Footer = ({ 
-    setCompl 
-}) => {
-// const setCompl = useContext(myContext)
-
+const Footer = () => {
+    const { setCompl } = useContext(myContext)
 
     const btns = [{
         title: "All",

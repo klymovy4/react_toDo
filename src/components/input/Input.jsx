@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "../../App.css";
+import { myContext } from "../Context";
 
-const Input = ({ addTodo }) => {
-
+const Input = () => {
+const {addTodo} = useContext(myContext)
     const [newValue, setNewValue] = useState("")
 
     const onsubmitHandler13 = (event) => {
